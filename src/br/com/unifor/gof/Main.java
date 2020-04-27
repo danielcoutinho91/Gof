@@ -1,7 +1,12 @@
 package br.com.unifor.gof;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
+import br.com.unifor.adapter.AppleAdapter;
+import br.com.unifor.adapter.AppleSmartphone;
+import br.com.unifor.adapter.SamsungSmartphone;
+import br.com.unifor.adapter.Smartphone;
 import br.com.unifor.facade.Empresa;
 import br.com.unifor.facade.Pessoa;
 import br.com.unifor.facade.Seguro;
@@ -21,7 +26,7 @@ public class Main {
 			System.out.println("1  - Singleton");
 			System.out.println("2  - Composite");
 			System.out.println("3  - Façade");
-			System.out.println("4  - ToDo");
+			System.out.println("4  - Adapter");
 			System.out.println("5  - ToDo");
 			System.out.println("6  - ToDo");
 			System.out.println("7  - ToDo");
@@ -134,7 +139,26 @@ public class Main {
 				break;
 				
 			case 4:
-				System.out.println("\n4 = " + opcao + "\n");
+				System.out.println("\n*** ADAPTER ***\n");
+				System.out.println("Converte a interface de uma classe para outra interface compatível com o esperado");
+				System.out.println("\n---------------------------------------------------\n");
+				
+				ArrayList<Smartphone> smartphones = new ArrayList<Smartphone>();
+				smartphones.add(new SamsungSmartphone());
+				// Não é possível criar instância de AppleSmartphone para colocar na arraylist de Smartphone
+				// Usa-se o adapter para que as assinaturas dos métodos sejam as mesmas de Smartphone
+				// AppleAdapter terá os métodos com nomes corretos fazendo chamada aos métodos de AppleSmartphone
+				smartphones.add(new AppleAdapter());
+				
+				System.out.println("\nTestando funções\n");				
+				for (Smartphone smartphone : smartphones) {
+					smartphone.call();
+					smartphone.text();
+					smartphone.wifi();
+					System.out.println();
+				}
+				System.out.println("\n---------------------------------------------------\n");
+				
 				break;
 				
 			case 5:
