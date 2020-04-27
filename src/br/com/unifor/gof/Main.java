@@ -2,6 +2,10 @@ package br.com.unifor.gof;
 
 import java.util.Scanner;
 
+import br.com.unifor.facade.Empresa;
+import br.com.unifor.facade.Pessoa;
+import br.com.unifor.facade.Seguro;
+import br.com.unifor.facade.Sistema;
 import br.com.unifor.gof.composite.Departamento;
 import br.com.unifor.gof.singleton.Conexao;
 
@@ -16,7 +20,7 @@ public class Main {
 			System.out.print("Escolha um exemplo de padrão: \n");
 			System.out.println("1  - Singleton");
 			System.out.println("2  - Composite");
-			System.out.println("3  - ToDo");
+			System.out.println("3  - Façade");
 			System.out.println("4  - ToDo");
 			System.out.println("5  - ToDo");
 			System.out.println("6  - ToDo");
@@ -101,7 +105,32 @@ public class Main {
 				break;
 				
 			case 3:
-				System.out.println("\n3 = " + opcao + "\n");
+				System.out.println("\n*** FAÇADE ***\n");
+				System.out.println("Uma única classe mais elevada e simplificada para um conjunto de classes de um subsitema");
+				System.out.println("\n---------------------------------------------------\n");
+				
+				Sistema s = new Sistema();
+				Pessoa p1 = s.createPessoa("Marcos", 29, 1000);
+				Pessoa p2 = s.createPessoa("José", 62, 3500);
+				Empresa ePrivada = s.createEmpresa("Unifor", "Privada");
+				Empresa ePublica = s.createEmpresa("Prefeitura", "Pública");
+				Seguro sVeiculo = s.createSeguro("Azul", "Veículo");
+				Seguro sVida = s.createSeguro("Porto", "Vida");
+				
+				System.out.println("Cliente\t\tEmpresa\t\tTipo\t\tSalário\t\tBonus");
+				System.out.println(p1.getNome() + "\t\t" + ePrivada.getNome() + "\t\t" + ePrivada.getTipo() + "\t\t" + p1.getSalario() + "\t\t" + s.calculaBonus(p1, ePrivada));
+				System.out.println(p1.getNome() + "\t\t" + ePublica.getNome() + "\t" + ePublica.getTipo() + "\t\t" + p1.getSalario() + "\t\t" + s.calculaBonus(p1, ePublica));
+				System.out.println(p2.getNome() + "\t\t" + ePrivada.getNome() + "\t\t" + ePrivada.getTipo() + "\t\t" + p2.getSalario() + "\t\t" + s.calculaBonus(p2, ePrivada));
+				System.out.println(p2.getNome() + "\t\t" + ePublica.getNome() + "\t" + ePublica.getTipo() + "\t\t" + p2.getSalario() + "\t\t" + s.calculaBonus(p2, ePublica));
+				
+				System.out.println("\n---------------------------------------------------\n");
+				
+				System.out.println("Cliente\t\tSeguradora\tTipo\t\tSalário\t\tValor");
+				System.out.println(p1.getNome() + "\t\t" + sVeiculo.getNome() + "\t\t" + sVeiculo.getTipo() + "\t\t" + p1.getSalario() + "\t\t" + s.calculaSeguro(p1, sVeiculo));
+				System.out.println(p1.getNome() + "\t\t" + sVida.getNome() + "\t\t" + sVida.getTipo() + "\t\t" + p1.getSalario() + "\t\t" + s.calculaSeguro(p1, sVida));
+				System.out.println(p2.getNome() + "\t\t" + sVeiculo.getNome() + "\t\t" + sVeiculo.getTipo() + "\t\t" + p2.getSalario() + "\t\t" + s.calculaSeguro(p2, sVeiculo));
+				System.out.println(p2.getNome() + "\t\t" + sVida.getNome() + "\t\t" + sVida.getTipo() + "\t\t" + p2.getSalario() + "\t\t" + s.calculaSeguro(p2, sVida));
+				System.out.println("\n---------------------------------------------------\n");
 				break;
 				
 			case 4:
