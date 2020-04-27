@@ -13,6 +13,8 @@ import br.com.unifor.facade.Seguro;
 import br.com.unifor.facade.Sistema;
 import br.com.unifor.gof.composite.Departamento;
 import br.com.unifor.gof.singleton.Conexao;
+import br.com.unifor.templatemethod.Ufc;
+import br.com.unifor.templatemethod.Unifor;
 
 public class Main {
 
@@ -27,7 +29,7 @@ public class Main {
 			System.out.println("2  - Composite");
 			System.out.println("3  - Façade");
 			System.out.println("4  - Adapter");
-			System.out.println("5  - ToDo");
+			System.out.println("5  - Template Method");
 			System.out.println("6  - ToDo");
 			System.out.println("7  - ToDo");
 			System.out.println("8  - ToDo");
@@ -162,7 +164,27 @@ public class Main {
 				break;
 				
 			case 5:
-				System.out.println("\n5 = " + opcao + "\n");
+				System.out.println("\n*** TEMPLATE METHOD ***\n");
+				System.out.println("Define alguns métodos, permitindo que sejam alterados nas subclasses. \nOutros métodos são abstratos e cada subclasse implementa de uma forma diferente");
+				System.out.println("\n---------------------------------------------------\n");
+				
+				Ufc ufc = new Ufc();
+				Unifor unifor = new Unifor();
+				double mf;
+				
+				System.out.println("UNIVERSIDADE\tAV1\tAV2\tAF\tMÉDIA FINAL\tSITUAÇÃO");
+				mf = ufc.mediaFinal(9.0, 8.5, 0.0);
+				System.out.println("UFC\t\t9.0\t8.5\t0.0\t" + mf + "\t\t" + ufc.situacao(mf));
+				mf = ufc.mediaFinal(6.0, 7.5, 6.0);
+				System.out.println("UFC\t\t6.0\t7.5\t6.0\t" + mf + "\t\t" + ufc.situacao(mf));
+				mf = ufc.mediaFinal(5.0, 5.5, 4.0);
+				System.out.println("UFC\t\t5.0\t5.5\t4.0\t" + mf + "\t\t" + ufc.situacao(mf));
+				mf = unifor.mediaFinal(6.0, 7.0, 5.5);
+				System.out.println("UNIFOR\t\t6.0\t7.0\t5.5\t" + mf + "\t\t" + unifor.situacao(mf));
+				mf = unifor.mediaFinal(5.0, 5.0, 4.0);
+				System.out.println("UNIFOR\t\t5.0\t5.0\t4.0\t" + mf + "\t\t" + unifor.situacao(mf));
+				System.out.println("\n---------------------------------------------------\n");
+				
 				break;
 				
 			case 6:
