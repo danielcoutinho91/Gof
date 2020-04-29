@@ -13,6 +13,10 @@ import br.com.unifor.facade.Seguro;
 import br.com.unifor.facade.Sistema;
 import br.com.unifor.gof.composite.Departamento;
 import br.com.unifor.gof.singleton.Conexao;
+import br.com.unifor.strategy.Circulo;
+import br.com.unifor.strategy.Figura;
+import br.com.unifor.strategy.Quadrado;
+import br.com.unifor.strategy.Triangulo;
 import br.com.unifor.templatemethod.Ufc;
 import br.com.unifor.templatemethod.Unifor;
 
@@ -188,7 +192,22 @@ public class Main {
 				break;
 				
 			case 6:
-				System.out.println("\n6 = " + opcao + "\n");
+				System.out.println("\n*** STRATEGY ***\n");
+				System.out.println("Define uma família de algoritmos de encapsula cada um deles. \nPermite que o algoritmo varie independente do cliente");
+				System.out.println("\n---------------------------------------------------\n");
+				
+				// Cada figura tem um cálculo da área diferente
+				Figura quadrado = new Quadrado();
+				Figura triangulo = new Triangulo();
+				Figura circulo = new Circulo();
+				
+				int l = 3;
+				System.out.println("Cálculo das áreas para cada figura\n");
+				System.out.println("Quadrado: \t" + quadrado.calculaArea(l));
+				System.out.println("Triângulo: \t" + triangulo.calculaArea(l));
+				System.out.println("Círculo: \t" + circulo.calculaArea(l));
+				System.out.println("\n---------------------------------------------------\n");
+				
 				break;
 				
 			case 7:
