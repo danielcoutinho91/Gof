@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import br.com.unifor.gof.pas.composite.Departamento;
 import br.com.unifor.gof.pas.singleton.Conexao;
+import br.com.unifor.gof.pas.state.Aluno;
 import br.com.unifor.pas.adapter.AppleAdapter;
 import br.com.unifor.pas.adapter.AppleSmartphone;
 import br.com.unifor.pas.adapter.SamsungSmartphone;
@@ -45,8 +46,8 @@ public class Main {
 			System.out.println("6  - Strategy");
 			System.out.println("7  - Iterator");
 			System.out.println("8  - Prototype");
-			System.out.println("9  - ToDo");
-			System.out.println("10 - ToDo\n");
+			System.out.println("9  - Memento");
+			System.out.println("10 - State\n");
 			System.out.print("Opção: ");
 			opcao = scan.nextInt();
 			System.out.println("\n---------------------------------------------------");
@@ -321,7 +322,30 @@ public class Main {
 				break;
 			
 			case 10:
-				System.out.println("\n10 = " + opcao + "\n");
+				System.out.println("\n*** STATE ***\n");
+				System.out.println("Permite que um objeto mude o comportamento de seus métodos de acordo com o seu estado atual");
+				System.out.println("\n---------------------------------------------------\n");
+				
+				Aluno a1 = new Aluno("Mateus", 9.5, 1000);
+				Aluno a2 = new Aluno("Luiz", 8.2, 1000);
+				Aluno a3 = new Aluno("Carlos", 6.5, 1000);
+				Aluno a4 = new Aluno("Caio", 3.0, 1000);
+				ArrayList<Aluno> alunos = new ArrayList<Aluno>();
+				alunos.add(a1);
+				alunos.add(a2);
+				alunos.add(a3);
+				alunos.add(a4);
+				
+				for (Aluno aluno : alunos) {
+					System.out.println("Nome: \t\t" + aluno.getNome());
+					System.out.println("Média: \t\t" + aluno.getMedia());
+					System.out.println("Mensalidade: \t" + aluno.getMensalidade());
+					System.out.println("Desempenho: \t" + aluno.getState().getDesempenho());
+					System.out.println("Desconto: \t" + aluno.getState().getDesconto());
+					System.out.println();
+				}				
+				
+				System.out.println("\n---------------------------------------------------\n");
 				break;
 				
 			case 0:
