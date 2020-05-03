@@ -16,6 +16,9 @@ import br.com.unifor.pas.facade.Sistema;
 import br.com.unifor.pas.iterator.ListaProdutos;
 import br.com.unifor.pas.iterator.ListaProdutosIterator;
 import br.com.unifor.pas.iterator.Produto;
+import br.com.unifor.pas.memento.CareTaker;
+import br.com.unifor.pas.memento.Configuracao;
+import br.com.unifor.pas.memento.Originator;
 import br.com.unifor.pas.prototype.Console;
 import br.com.unifor.pas.prototype.Playstation;
 import br.com.unifor.pas.strategy.Circulo;
@@ -252,14 +255,18 @@ public class Main {
 				Console ps1 = new Playstation("Sony", "Playstation", 1994, "Cinza", midias);
 				ps1.showInfo();
 				
-				Console ps2 = ps1.clone();
+				// Criando segunda instância a partir da primeira
+				Console ps2 = ps1.clone();				
+				// Mudando apenas os campos que irão modificar
 				ps2.setNome("Playstation 2");
 				ps2.setAno(2000);
 				ps2.setCor("Preto");
 				ps2.addMidia("DVD");
 				ps2.showInfo();
 				
+				// Criando terceira instância a partir da segunda
 				Console ps3 = ps2.clone();
+				//Mudando apenas os campos que irão modificar
 				ps3.setNome("Playstation 3");
 				ps3.setAno(2006);
 				ps3.addMidia("Blu-ray");
@@ -269,7 +276,48 @@ public class Main {
 				break;
 				
 			case 9:
-				System.out.println("\n9 = " + opcao + "\n");
+				System.out.println("\n*** MEMENTO ***\n");
+				System.out.println("Guarda o estado atual de um objeto sem violar o encapsulamento e permite recuperá-lo no futuro");
+				System.out.println("\n---------------------------------------------------\n");
+				
+				Originator originator = new Originator();
+				CareTaker caretaker = new CareTaker();
+				
+				Configuracao config1 = new Configuracao("Windows", "Intel", "4GB");
+				Configuracao config2 = new Configuracao("Linux", "Nvidia", "8GB");
+				Configuracao config3 = new Configuracao("Apple", "ATI", "16GB");
+				
+				// Originator recebe a configuração 1
+				originator.setConfiguracao(config1);
+				
+				// Caretaker salva a configuração que está atualmento no originator
+				caretaker.add(originator.saveConfiguracaoToMemento());
+				
+				// Originator recebe a configuração 2				
+				originator.setConfiguracao(config2);
+				
+				// Salva a configuração 2 no caretaker
+				caretaker.add(originator.saveConfiguracaoToMemento());
+				
+				// Originator recebe a configuração 3
+				originator.setConfiguracao(config3);
+				
+				// Imprime a configuração que está atualmente no originator
+				originator.getConfiguracao().showInfo();
+				
+				// Originator recebe a primeira configuração salva no caretaker
+				originator.getConfiguracaoFromMemento(caretaker.get(0));
+				
+				// Imprime a configuração que está atualmente no originator
+				originator.getConfiguracao().showInfo();
+				
+				// Originator recebe a segunda configuração salva no caretaker
+				originator.getConfiguracaoFromMemento(caretaker.get(1));
+				
+				// Imprime a configuração que está atualmente no originator
+				originator.getConfiguracao().showInfo();
+				
+				System.out.println("\n---------------------------------------------------\n");
 				break;
 			
 			case 10:
