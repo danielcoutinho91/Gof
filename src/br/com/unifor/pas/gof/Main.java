@@ -247,7 +247,7 @@ public class Main {
 				
 			case 8:
 				System.out.println("\n*** PROTOTYPE ***\n");
-				System.out.println("É usado para percorrer os itens de uma coleção sem violar o seu encapsulamento ");
+				System.out.println("Permite que novos objetos sejam criados a partir da cópia de objetos já existentes");
 				System.out.println("\n---------------------------------------------------\n");
 				
 				// Criando primeira instância
