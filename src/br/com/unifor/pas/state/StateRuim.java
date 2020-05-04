@@ -1,4 +1,4 @@
-package br.com.unifor.gof.pas.state;
+package br.com.unifor.pas.state;
 
 public class StateRuim extends State {
 	

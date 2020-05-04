@@ -1,4 +1,4 @@
-package br.com.unifor.gof.pas.composite;
+package br.com.unifor.pas.composite;
 
 import java.util.ArrayList;
 

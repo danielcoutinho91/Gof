@@ -1,4 +1,4 @@
-package br.com.unifor.gof.pas.singleton;
+package br.com.unifor.pas.singleton;
 
 public class Conexao {
 	
