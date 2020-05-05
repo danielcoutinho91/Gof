@@ -336,6 +336,7 @@ public class Main {
 				alunos.add(a3);
 				alunos.add(a4);
 				
+				System.out.println("Situação dos alunos\n");
 				for (Aluno aluno : alunos) {
 					System.out.println("Nome: \t\t" + aluno.getNome());
 					System.out.println("Média: \t\t" + aluno.getMedia());
@@ -343,7 +344,26 @@ public class Main {
 					System.out.println("Desempenho: \t" + aluno.getState().getDesempenho());
 					System.out.println("Desconto: \t" + aluno.getState().getDesconto());
 					System.out.println();
-				}				
+				}
+				
+				// Alterando as médias
+				a1.setMedia(3.0);
+				a2.setMedia(6.1);
+				a3.setMedia(8.3);
+				a4.setMedia(9.1);
+				
+				// Novas situações
+				System.out.println("Nova situação dos alunos\n");
+				
+				for (Aluno aluno : alunos) {
+					System.out.println("Nome: \t\t" + aluno.getNome());
+					System.out.println("Média: \t\t" + aluno.getMedia());
+					System.out.println("Mensalidade: \t" + aluno.getMensalidade());
+					System.out.println("Desempenho: \t" + aluno.getState().getDesempenho());
+					System.out.println("Desconto: \t" + aluno.getState().getDesconto());
+					System.out.println();
+				}
+				
 				
 				System.out.println("\n---------------------------------------------------\n");
 				break;

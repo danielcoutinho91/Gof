@@ -36,6 +36,7 @@ public class Aluno {
 
 	public void setMedia(double media) {
 		this.media = media;
+		this.state.mudarState();
 	}
 	
 	public double getMensalidade() {
